@@ -1,0 +1,5 @@
+PyYAML==5.4.1
+pathlib~=1.0.1
+redis~=3.5.3
+Flask==2.0.1
+requests

@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Переход по ссылке
+{% endblock %}
+
+{% block body %}
+
+<br>
+<div class="container">
+    <div class="row">
+      <div class="col">
+      </div>
+      <div class="col-8 ">
+        <div class="page">
+          <h4 class="center">Переход по ссылке</h4>
+          <div class="row">
+            <div class="col">
+            </div>
+            <div class="col-8">
+              <div class="d-flex justify-content-center">
+                <div class="spinner-border" role="status">
+                  <span class="visually-hidden"></span>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+            </div>
+            <div class="col-8">
+              <p class="center">Переход будет выполнен через <span id="rocket"></span> секунд</p>
+                <script>
+                let timer; // пока пустая переменная
+                let x = 5; // стартовое значение обратного отсчета
+                countdown(); // вызов функции
+                function countdown(){  // функция обратного отсчета
+                  document.getElementById('rocket').innerHTML = x;
+                  x--; // уменьшаем число на единицу
+                  if (x<0){
+                    clearTimeout(timer); // таймер остановится на нуле
+                  }
+                  else {
+                    timer = setTimeout(countdown, 1000);
+                  }
+                }
+                </script>
+              <script>
+                 window.setTimeout(function(){
+                   // Move to a new location or you can do something else
+                   window.location.href = "{{value}}"; }, 5000);
+             </script>
+            </div>
+            <div class="col">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+      </div>
+    </div>
+<br>
+    <div class="row">
+      <div class="col-2">
+      </div>
+      <div class="col-8">
+        <div class="page">
+          <ul class="nav justify-content-center">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="/">Перейти на главную</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-2">
+      </div>
+    </div>
+
+<br>
+
+    <div class="row">
+      <div class="col">
+      </div>
+      <div class="col-8 ">
+        <img src="./../static/images/mai_magistratura.png" class="img-fluid" alt="...">
+      </div>
+      <div class="col">
+      </div>
+    </div>
+</div>
+  <br>
+
+{% endblock %}

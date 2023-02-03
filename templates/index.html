@@ -1,0 +1,128 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Main
+{% endblock %}
+
+{% block body %}
+
+<br>
+<div class="container">
+  <div class="row">
+    <div class="col">
+    </div>
+    <div class="col-8 ">
+      <div class="page">
+
+        <h3 class="center"><a href="/">Сокращение cсылок</a></h3>
+        <p class="center">На этой странице вы можете сделать из длинной и сложной ссылки простую.
+          Такие ссылки удобно использовать в ваших записях и сообщениях.</p>
+        <form method="post">
+          <div class="row">
+            <div class="col">
+            </div>
+            <div class="col-7">
+              <input type="text" class="form-control form-control-sm" placeholder="insert your link" name="full_link" id="full_link" aria-label="full_link">
+            </div>
+            <div class="col-3">
+              <button type="submit" class="btn btn-primary btn-sm" >Сократить</button>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-2">
+            </div>
+            <div class="col-7">
+              <div class="margin_div">
+                <div class="input-group input-group-sm">
+                  <select class="custom-select" id="generate_method" name="generate_method">
+                    <option value="uuid4" selected>Генерация ссылки с помощью uuid4</option>
+                    <option value="timestamp">Генерация ссылки с помощью timestamp</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="col-2">
+            </div>
+          </div>
+          </form>
+
+
+          <div class="link_generete">
+              {% if primary_div %}
+                <div class="row">
+                  <div class="col">
+                  </div>
+                  <div class="col-10">
+                    <div class="alert alert-success" role="alert">
+                      Ваша коротакая ссылка <a href="{{ domen_name}}/{{key}}" target="_blank" class="alert-link">{{ domen_name}}/{{key}}</a>
+                    </div>
+                  </div>
+                  <div class="col">
+                  </div>
+                </div>
+              {% endif %}
+
+            {% if danger_div %}
+                <div class="row">
+              <div class="col">
+              </div>
+              <div class="col-10">
+                <div class="alert alert-danger" role="alert">
+                  Ошибка, не существующая ссылка <a href="{{value}}" target="_blank" class="alert-link">{{value}}</a>
+                </div>
+              </div>
+              <div class="col">
+              </div>
+            </div>
+            {% endif %}
+
+          </div>
+      </div>
+    </div>
+    <div class="col">
+    </div>
+  </div>
+</div>
+
+<br>
+
+<div class="container">
+  <div class="row">
+    <div class="col">
+    </div>
+    <div class="col-8">
+      <div class="page">
+        <h6>Созданные ранее ссылки:</h6>
+          <div class="table-wrapper-scroll-y my-custom-scrollbar">
+            <table class="table table-bordered table-striped mb-0 table-sm">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Keys</th>
+                  <th scope="col">Values</th>
+                </tr>
+              </thead>
+              <tbody>
+              {% for k,v in all_links.items() %}
+                <tr>
+                  <th scope="row">{{ loop.index0 + 1}}</th>
+                  <td><a href="/{{k}}" target="_blank">{{ k }}</a></td>
+                  <td>{{ v }}</td>
+                </tr>
+              {% endfor %}
+              </tbody>
+            </table>
+          </div>
+
+        <br>
+      </div>
+    </div>
+    <div class="col">
+    </div>
+  </div>
+</div>
+
+<br>
+<a href="https://t.me/PolyakovSV" target="_blank"></a>
+
+{% endblock %}
